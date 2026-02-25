@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>LTV & NBO demo</title>
+    <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+    <h1>LTV & NBO demo</h1>
+    <p class="subtitle">Мини‑панель для ручной проверки API.</p>
+
+    <nav class="tabs" role="tablist">
+        <button type="button" class="tab active" data-tab="ltv" role="tab">LTV</button>
+        <button type="button" class="tab" data-tab="nbo" role="tab">NBO</button>
+        <button type="button" class="tab" data-tab="dashboard" role="tab">Дашборд</button>
+        <button type="button" class="tab" data-tab="reports" role="tab">Отчёты</button>
+        <button type="button" class="tab" data-tab="output" role="tab">Ответ API</button>
+    </nav>
+
+    <div id="panel-ltv" class="tab-panel active" role="tabpanel">
+        <div class="card">
+            <h2>Прогноз LTV</h2>
+            <div class="row">
+                <div>
+                    <label>company_id</label>
+                    <input id="ltv_company_id" placeholder="comp_123" />
+                </div>
+                <div>
+                    <label>company_size</label>
+                    <input id="ltv_company_size" type="number" placeholder="100" />
+                </div>
+            </div>
+            <label>revenue</label>
+            <input id="ltv_revenue" type="number" placeholder="123456" />
+            <button type="button" id="ltv_btn">Посчитать LTV</button>
+        </div>
+    </div>
+
+    <div id="panel-nbo" class="tab-panel" role="tabpanel">
+        <div class="card">
+            <h2>Рекомендации продуктов (NBO)</h2>
+            <div class="row">
+                <div>
+                    <label>company_id</label>
+                    <input id="nbo_company_id" placeholder="comp_123" />
+                </div>
+                <div>
+                    <label>top_k</label>
+                    <input id="nbo_top_k" type="number" value="5" min="1" max="20" />
+                </div>
+            </div>
+            <button type="button" id="nbo_btn">Получить рекомендации</button>
+        </div>
+    </div>
+
+    <div id="panel-dashboard" class="tab-panel" role="tabpanel">
+        <div class="card">
+            <h2>Сводный дашборд (заглушка)</h2>
+            <p>В реальном проекте здесь будет интерактивный дашборд по LTV и рекомендациям. Сейчас ниже просто список сегментов LTV с API.</p>
+            <button type="button" id="dash_btn">Обновить дешборд</button>
+            <div id="dash_container" class="dash-container"></div>
+        </div>
+    </div>
+
+    <div id="panel-reports" class="tab-panel" role="tabpanel">
+        <div class="card">
+            <h2>Отчёты для менеджмента (заглушка)</h2>
+            <p>Здесь будут ссылки на BI-дашборды и PDF/презентации. Для локального стенда BI поднимается через Metabase.</p>
+            <p class="report-link">
+                <a href="http://localhost:3000" target="_blank" rel="noopener">Открыть BI (Metabase)</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="panel-output" class="tab-panel" role="tabpanel">
+        <h2>Ответ API</h2>
+        <pre id="output">Здесь появится ответ сервера…</pre>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>

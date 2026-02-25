@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: dataton-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=dataton
+      - DB_USER=dataton
+      - DB_PASSWORD=dataton
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: dataton-db
+    environment:
+      - POSTGRES_DB=dataton
+      - POSTGRES_USER=dataton
+      - POSTGRES_PASSWORD=dataton
+    ports:
+      - "5432:5432"
+    volumes:
+      - dataton-db-data:/var/lib/postgresql/data
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: dataton-metabase
+    ports:
+      - "3000:3000"
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_PORT=5432
+      - MB_DB_USER=metabase
+      - MB_DB_PASS=metabase
+      - MB_DB_HOST=db
+    depends_on:
+      - db
+
+volumes:
+  dataton-db-data:
+

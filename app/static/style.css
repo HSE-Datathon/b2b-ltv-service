@@ -1,0 +1,234 @@
+/* Фирменный стиль МТС: Arial Bold — заголовки, Arial Regular — набор */
+
+:root {
+    --mts-red: #E30613;
+    --mts-red-hover: #c40510;
+    --mts-text: #1a1a1a;
+    --mts-text-secondary: #4a4a4a;
+    --mts-bg: #f7f7f7;
+    --mts-white: #ffffff;
+    --mts-border: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: var(--mts-text);
+    margin: 0;
+    padding: 24px;
+    background: var(--mts-bg);
+    line-height: 1.4;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: var(--mts-text);
+}
+
+h1 {
+    margin: 0 0 0.25rem 0;
+    font-size: 24px;
+}
+
+.subtitle {
+    margin-bottom: 1.25rem;
+    color: var(--mts-text-secondary);
+    font-size: 14px;
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--mts-border);
+    padding-bottom: 0;
+}
+
+.tab {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    color: var(--mts-text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    border-radius: 0;
+}
+
+.tab:hover {
+    color: var(--mts-text);
+    background: rgba(227, 6, 19, 0.06);
+}
+
+.tab.active {
+    color: var(--mts-red);
+    font-weight: bold;
+    border-bottom-color: var(--mts-red);
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+h2 {
+    margin: 0 0 1rem 0;
+    font-size: 18px;
+}
+
+.card {
+    background: var(--mts-white);
+    padding: 20px 24px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+    max-width: 640px;
+    border: 1px solid var(--mts-border);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--mts-text);
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--mts-border);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--mts-red);
+}
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 14px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background: var(--mts-red);
+    color: var(--mts-white);
+    font-size: 14px;
+}
+
+button:hover:not(:disabled) {
+    background: var(--mts-red-hover);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+pre {
+    background: #1a1a1a;
+    color: #e8e8e8;
+    padding: 16px;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 13px;
+    font-weight: normal;
+    max-width: 720px;
+    overflow: auto;
+    border: 1px solid var(--mts-border);
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+}
+
+.row > div {
+    flex: 1;
+}
+
+.dash-container {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.report-link {
+    margin-top: 12px;
+}
+
+.report-link a {
+    font-weight: bold;
+    color: var(--mts-red);
+    text-decoration: none;
+}
+
+.report-link a:hover {
+    text-decoration: underline;
+}
+
+.dash-container table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 480px;
+    font-size: 14px;
+}
+
+.dash-container th {
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid var(--mts-border);
+    padding: 10px 12px;
+    background: var(--mts-bg);
+}
+
+.dash-container td {
+    text-align: left;
+    border-bottom: 1px solid var(--mts-border);
+    padding: 8px 12px;
+}
+
+.dash-container th:last-child,
+.dash-container td:last-child {
+    text-align: right;
+}
+
+.dash-container th:nth-child(2),
+.dash-container td:nth-child(2) {
+    text-align: right;
+}
+
+.card p {
+    margin: 0 0 0.75rem 0;
+    font-weight: normal;
+    color: var(--mts-text-secondary);
+}
+
+.card p:last-of-type {
+    margin-bottom: 0;
+}
