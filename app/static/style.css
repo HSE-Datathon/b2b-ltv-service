@@ -232,3 +232,31 @@ pre {
 .card p:last-of-type {
     margin-bottom: 0;
 }
+
+.hint {
+    font-weight: normal;
+    color: var(--mts-text-secondary);
+    font-size: 12px;
+}
+
+.company-picker {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.company-picker input {
+    margin-top: 0;
+    margin-bottom: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+
+.company-picker select {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 12px;
+    background: var(--mts-white);
+}

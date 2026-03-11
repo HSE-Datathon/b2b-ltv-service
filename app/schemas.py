@@ -63,3 +63,17 @@ class NBOResponse(BaseModel):
     recommendations: List[RecommendedProduct]
     model_version: str
 
+
+class CompanyItem(BaseModel):
+    company_id: str
+    ltv_segment: str
+    predicted_ltv: float
+
+
+class TopNBOItem(BaseModel):
+    rank: int = Field(..., description="Позиция в рейтинге")
+    product_name: str
+    nbo_score: float = Field(..., description="Суммарный NBO-скор по всем кластерам")
+    avg_revenue: float = Field(..., description="Средняя выручка по продукту")
+    probability: float = Field(..., description="Нормированная вероятность рекомендации")
+

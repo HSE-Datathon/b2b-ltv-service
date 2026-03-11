@@ -1,6 +1,48 @@
 const out = document.getElementById("output");
 const dashContainer = document.getElementById("dash_container");
 
+let allCompanies = [];
+
+function renderSelect(selectEl, companies) {
+    selectEl.innerHTML = companies
+        .slice(0, 200)
+        .map((c) => `<option value="${c.company_id}">${c.company_id} · ${c.ltv_segment} · ${Math.round(c.predicted_ltv).toLocaleString("ru")} ₽</option>`)
+        .join("");
+}
+
+function setupPicker(searchId, selectId, countId) {
+    const searchEl = document.getElementById(searchId);
+    const selectEl = document.getElementById(selectId);
+    const countEl = document.getElementById(countId);
+
+    searchEl.addEventListener("input", () => {
+        const q = searchEl.value.trim().toLowerCase();
+        const filtered = q
+            ? allCompanies.filter((c) => c.company_id.includes(q) || c.ltv_segment.includes(q))
+            : allCompanies;
+        countEl.textContent = `(${filtered.length})`;
+        renderSelect(selectEl, filtered);
+    });
+}
+
+async function loadCompanies() {
+    try {
+        const res = await fetch("/companies");
+        allCompanies = await res.json();
+
+        ["ltv", "nbo"].forEach((prefix) => {
+            const countEl = document.getElementById(`${prefix}_company_count`);
+            if (countEl) countEl.textContent = `(${allCompanies.length})`;
+            renderSelect(document.getElementById(`${prefix}_company_id`), allCompanies);
+            setupPicker(`${prefix}_search`, `${prefix}_company_id`, `${prefix}_company_count`);
+        });
+    } catch (e) {
+        console.warn("Не удалось загрузить список компаний:", e);
+    }
+}
+
+loadCompanies();
+
 function showOutputTab() {
     document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
     document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
@@ -96,7 +138,7 @@ async function loadDashboard() {
             </table>
         `;
     } catch (e) {
-        dashContainer.textContent = "Ошибка загрузки дешборда: " + e;
+        dashContainer.textContent = "Ошибка загрузки дашборда: " + e;
     } finally {
         btn.disabled = false;
     }
