@@ -40,3 +40,11 @@ python -m uvicorn app.main:app --reload
 - **CatBoost** — регрессор LTV, предсказывает будущую выручку компании за 6 месяцев
 - **KMeans** — кластеризация клиентов (3 кластера) по транзакционному профилю
 - **NBO-скоры** — предрасчитаны для каждого кластера на основе популярности и средней выручки продуктов
+
+![alt text](image.png)
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+![alt text](image-4.png)
